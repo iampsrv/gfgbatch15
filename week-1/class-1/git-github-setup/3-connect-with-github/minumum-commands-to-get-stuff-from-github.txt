@@ -1,0 +1,21 @@
+If u are doing it for the very first time :
+
+make a folder anywhere on your machine
+open git bash at the location
+
+write the command
+git clone https://github.com/iampsrv/gfgbatch15
+
+you should see the "gfgbatch15" in your machine.
+you will notice that you have all the changes in this "gfgbatch15" folder, which you were seeing on github as well.
+
+-----------------------
+
+if you already have the "gfgbatch15" folder (which mean u have performed the git clone in the past)
+all you need to do is:
+open the "gfgbatch15" folder.
+open git bash at this position
+write the command : 
+git pull origin master
+
+this would all the changes which are there on github but not there in your personal machine (local)

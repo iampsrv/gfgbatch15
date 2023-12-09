@@ -1,0 +1,19 @@
+Configuring your email and identity with GitHub using Git involves setting up your Git configuration to associate your commits with a specific email address and username. This information is used to attribute the commits to the correct user on GitHub.
+
+Here's how you can configure your email and identity with GitHub using Git:
+
+1. Set your Git username and email globally:
+bash
+Copy code
+git config --global user.name "Your GitHub Username"
+git config --global user.email "your.email@example.com"
+Replace "Your GitHub Username" with your actual GitHub username and "your.email@example.com" with the email associated with your GitHub account.
+
+2. Verify your settings:
+You can verify that your settings have been applied correctly by running:
+
+bash
+Copy code
+git config --global --get user.name
+git config --global --get user.email
+This should display the values you've set for user.name and user.email.
