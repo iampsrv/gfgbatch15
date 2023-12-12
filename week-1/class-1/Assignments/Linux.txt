@@ -1,0 +1,125 @@
+Assignment 1: File Management
+
+Task 1: Basic File Operations
+
+Create a directory named "file_management_assignment" and navigate into it.
+Inside this directory, create three subdirectories: "docs", "images", and "code".
+Create a text file named "notes.txt" within the "docs" directory.
+Copy the "notes.txt" file to the "code" directory and rename it to "ideas.txt".
+Move the "ideas.txt" file to the "images" directory.
+
+Task 2: Working with Files and Directories
+
+Use the ls command to list the contents of the "images" directory.
+Display the contents of the "notes.txt" file using the cat command.
+Delete the "images" directory and its contents using the rm command with appropriate options.
+Create an empty file named "tasks.txt" using the touch command.
+
+Assignment 2: Process Management
+
+Task 1: Managing Processes
+
+Use the ps command to list all running processes.
+Identify the process ID (PID) of the process "bash" using ps.
+Use the top command to monitor real-time system processes.
+Use the kill command to terminate the "bash" process by its PID.
+Launch a new terminal session and use the htop command to explore the interactive process manager.
+
+Task 2: Process Priority and Control
+
+Use the nice command to run a process with a higher priority.
+Start a CPU-intensive process and monitor its resource usage using top.
+Change the priority of the running process using the renice command.
+
+Assignment 3: User Management
+
+Task 1: User Account Operations
+
+Create a new user account named "student" using the useradd command.
+Set a password for the "student" account using the passwd command.
+Display user account information using the id and finger commands.
+
+Task 2: Group Management
+
+Create a new group named "study_group" using the groupadd command.
+Add the "student" user to the "study_group" using the usermod command.
+List the members of the "study_group" using the members command.
+
+Assignment 4: Text Processing
+
+Task 1: Basic Text Manipulation
+
+Create a text file named "data.txt" and populate it with some sample text.
+Use the cat command to display the contents of "data.txt".
+Count the number of lines, words, and characters in "data.txt" using wc.
+
+Task 2: Search and Replace
+
+Use the grep command to search for lines containing a specific keyword in "data.txt".
+Replace occurrences of the keyword with a new word using the sed command.
+
+Task 3: Extracting Information
+
+Extract lines containing email addresses from "data.txt" using grep and regular expressions.
+Use cut to extract specific fields from a comma-separated file.
+
+Assignment 5: Ownership and File Permissions
+
+Task 1: File Permissions
+
+Create a new directory named "permissions_assignment" and navigate into it.
+Inside this directory, create a text file named "abc.txt" with sensitive content.
+Set the file permissions so that only the owner can read and write, while others have no access.
+Verify the permissions using the ls -l command.
+
+Task 2: Ownership and Group Permissions
+
+Create a new group named "dev_group" using the groupadd command.
+Add the current user to the "dev_group" using the usermod command.
+Change the group ownership of "abc.txt" to "dev_group".
+Allow members of the "dev_group" to read the "abc.txt" file.
+
+Assignment 6: Monitoring
+
+Task 1: System Monitoring
+
+Use the top command to monitor real-time system processes.
+Identify resource-intensive processes and note their resource usage.
+Use the ps command to display detailed information about a specific process.
+
+Task 2: Log Monitoring
+
+View the contents of the system log file (e.g., /var/log/syslog or /var/log/messages) using the tail command.
+Use the grep command to search for specific keywords or patterns in the log file.
+
+Assignment 7: Remote Access
+
+Task 1: Secure Shell (SSH)
+
+Install the OpenSSH server on your Linux system.
+Enable SSH service to start at boot time.
+Use the ssh command to connect to the Linux system remotely.
+Perform file operations (e.g., copy, move) on the remote machine using scp or rsync.
+
+Assignment 8: Networking
+
+Task 1: IP Configuration
+
+Use the ifconfig or ip command to view the network interfaces and their configurations.
+
+Task 2: Network Connectivity
+
+Use the ping command to test network connectivity to a remote server.
+Use the traceroute or tracepath command to trace the route to a remote server.
+
+Assignment 9: Services
+
+Task 1: Service Management
+
+List all running services using the appropriate command for your Linux distribution (e.g., systemctl or service).
+Choose a service and stop, start, or restart it using the appropriate commands.
+
+Task 2: Service Configuration
+
+Edit the configuration file of a service (e.g., Apache web server, MySQL) to change its settings.
+Apply the configuration changes and restart the service.
