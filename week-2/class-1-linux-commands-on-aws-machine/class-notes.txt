@@ -1,0 +1,197 @@
+select UBUNTU while creating the aws machine - Debian based Linux Distribution
+
+Commands are mostly dealing with the following topics
+- File Management
+- process management
+- user management
+
+
+working with the console during the class :
+
+by default u are at the /home/ubuntu location
+lets go the the root directory by using cd /
+
+cd / will take us to the root location which is the head of the file system.
+Do ls at this point to see all the layer 1 items(folders)
+
+these include :
+
+bin: 
+Contains essential binary executables (commands) that are needed for system recovery and maintenance.
+Ex : you ll see the binaries for a lot of in build commands like mkdir,tar etc
+
+boot: 
+Contains the files needed to boot the operating system.
+ex : grub can be seen inside the boot folder :
+The "grub" directory specifically holds configuration files and modules related to the GRUB bootloader. GRUB allows you to choose between different operating systems installed on your computer during the boot process.
+
+dev: 
+Contains device files representing devices connected to the system.
+ex : xvda : network hard-disk connected to my system
+
+etc: 
+Contains system-wide configuration files.
+
+home: Home directories for user accounts.
+Notice the default directory we begin with is this only: it was home/ubuntu
+if u do an ls in home: u ll see the ubuntu folder
+
+lib, lib32, lib64, libx32: Libraries needed for programs in various architectures.
+
+lost+found: A directory used by the filesystem recovery process.
+
+media: Mount point for removable media (e.g., USB drives).
+
+mnt: Temporarily mounted filesystems.
+
+opt: Optional software packages.
+ex : this would be used eventually used for prometheus and Grafana
+
+proc: Virtual filesystem providing information about processes and kernel parameters.
+
+root: Home directory for the root user.
+
+run: A directory containing system information since the last boot.
+
+sbin: Contains binary executables used for system administration tasks.
+
+snap: Directory for Snap packages (a packaging system for Linux).
+
+srv: Data for services provided by the system.
+
+sys: Contains information about the kernel.
+
+tmp: Temporary files.
+
+usr: Contains user-related programs and data.
+
+var: Variable files—files that are expected to change in size and content as the system runs.
+
+
+----------------------------------
+
+process-management
+
+- clone any repo which has some app- in class a flask app was cloned
+- python download was not working 
+- edit security group to handle all traffic
+- use the shell script used to all python download
+
+when we ran the app.py using python3: it was a foreground process - so the cmd is blocked, ideally it should run in the background
+
+for running it in the BG: nohup <command> &
+this means no hang up , so even if terminal is closed the process should continue
+and & is a shell operator which mean the cmd wont wait fot eh prvious process to finish , so the cmd is basically available to accept new command
+
+If u want to convert a BG job to FG then use this command: fg %1
+
+The command fg %1 is used in a Unix-like shell environment to bring a background job into the foreground. Here's a breakdown of the components:
+
+fg: Stands for "foreground." It is a shell built-in command used to bring a background job into the foreground, meaning it will start receiving input and output from the terminal.
+
+%1: Refers to the job number. In this case, %1 represents the first background job that was started in the current shell session.
+
+
+ps -ef
+
+when you run ps -ef, you get a detailed list of all processes currently running on the system. Each line in the output represents one process, and the information typically includes details such as the process ID (PID), the user who owns the process, the CPU and memory usage, the command that started the process, and other relevant details.
+
+we can see the PID of a process and kill it as well :
+
+When you use sudo kill -9 <PID>, 
+you are telling the operating system to immediately terminate the process with the specified process ID (<PID>) without giving it an opportunity to perform any cleanup or shutdown procedures.
+
+The top gives u cpu statistics (but a lot of it), if only the first few lines are needed :
+top -n 1 -b | grep "load average:" | awk '{print $10 $11 $12}'
+
+explain:
+
+The top command is used to display system statistics, including information about processes and the system's resource usage. The options here are:
+
+-n 1: Specifies that top should only run for a single iteration and then exit.
+-b: Runs top in batch mode, which is suitable for extracting information programmatically.
+| (pipe): The pipe operator (|) is used to pass the output of one command as input to another command.
+
+grep "load average:": The grep command is used to search for lines containing the specified pattern. In this case, it looks for lines containing "load average:" in the output of top.
+
+awk '{print $10 $11 $12}': The awk command is a powerful text processing tool. Here, it prints the 10th, 11th, and 12th fields from each line. In the context of the load average output, these fields typically represent the 1-minute, 5-minute, and 15-minute load averages.
+
+So, the overall purpose of the command is to use top to get system statistics, filter the lines containing "load average:" using grep, and then use awk to extract and print the specific fields representing the load averages.
+
+-----------------------------------------------------------------
+
+OwnerShip and Permission:
+
+R - read - 4
+W - write - 2
+X - execute - 1
+
+User, group, others
+so 
+7	7	7
+means all the read, write execute permissions have been given to user group and others
+
+
+lets say we have a file pranjal.txt and we use chmod 777 abcd.txt
+
+chmod: Stands for "change mode." It is a command in Unix and Unix-like operating systems that is used to change the permissions of files or directories.
+
+777: Represents the permission settings. In this context, 777 is a numeric representation of the permissions in octal (base-8) format. Each digit in 777 corresponds to a set of permissions: the first digit for the owner, the second for the group, and the third for others (everyone else).
+
+The digit 7 corresponds to read (r), write (w), and execute (x) permissions.
+So, 777 grants read, write, and execute permissions to the owner, the group, and others.
+abcd.txt: This is the name of the file for which the permissions are being changed.
+
+groupadd dev-team
+cat /etc/group | grep dev-team
+useradd -G dev-team pranjal
+useradd -G dev-team user1
+cat /etc/group | grep dev-team
+passwd pranjal
+passwd user1
+mkdir /home/dev-team
+ls -ltr
+chown :dev-team /home/dev-team/
+chmod g+w /home/dev-team/
+chmod o-rx dev-team
+
+switch to root user : sudo su
+
+The user of 1 team is excluded from the member of some other team
+
+-----------------------------------------------------------------------------
+
+Text Processing :
+
+use .* for anything
+use $ for ends
+
+wc -l filename: Count the number of lines in a file
+wc -w filename: Count the number of words in a file
+wc -c filename: Count the number of characters in a file
+
+
+----------------------------
+
+CIDR
+
+CIDR, which stands for Classless Inter-Domain Routing, is a standard for representing IP addresses and their associated routing prefix. CIDR notation is used to specify IP addresses and their routing information more flexibly than the original system of class-based IP addressing.
+
+CIDR notation is expressed as an IP address followed by a forward slash and a number representing the network prefix length. The format is:
+
+ip_address/prefix_length
+
+For example:
+
+192.168.1.0/24 represents a network with a 24-bit prefix, allowing 256 addresses (from 192.168.1.0 to 192.168.1.255).
+
+10...
+172...
+192...
+
+all the above are private IPs
+
+
+
+
+
