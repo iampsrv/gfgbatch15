@@ -1,0 +1,139 @@
+1. docker run
+   - Creates and starts a container.
+   - Example: docker run -d -p 80:80 nginx
+
+2. docker build
+   -  Builds an image from a Dockerfile.
+   - Example: docker build -t myapp .
+
+3. docker images
+   -  Lists all images.
+   - Example: docker images
+
+4. docker ps
+   -  Lists running containers.
+   - Example: docker ps
+
+5. docker ps -a
+   -  Lists all containers, including stopped ones.
+   - Example: docker ps -a
+
+6. docker stop
+   -  Stops one or more running containers.
+   - Example: docker stop my_container
+
+7. docker rm
+   -  Removes one or more containers.
+   - Example: docker rm my_container
+
+8. docker rmi
+   -  Removes one or more images.
+   - Example: docker rmi nginx
+
+9. docker pull
+   -  Pulls an image or a repository from a registry.
+   - Example: docker pull ubuntu
+
+10. docker push
+    -  Pushes an image or a repository to a registry.
+    - Example: docker push myuser/myapp
+
+11. docker exec
+    -  Runs a command in a running container.
+    - Example: docker exec -it my_container bash
+
+12. docker logs
+    -  Fetches the logs of a container.
+    - Example: docker logs my_container
+
+13. docker network create
+    -  Creates a new network.
+    - Example: docker network create my_network
+
+14. docker volume create
+    -  Creates a new volume.
+    - Example: docker volume create my_volume
+
+15. docker inspect
+    -  Returns detailed information on Docker objects.
+    - Example: docker inspect my_container
+
+16. docker-compose up
+    -  Starts and runs a multi-container Docker application.
+    - Example: docker-compose up
+
+17. docker attach
+    -  Attaches to a running container.
+    - Example: docker attach my_container
+
+18. docker cp
+    -  Copies files/folders between a container and the local filesystem.
+    - Example: docker cp my_container:/path/to/file /local/path
+
+19. docker diff
+    -  Inspects changes to files or directories on a container's filesystem.
+    - Example: docker diff my_container
+
+20. docker events
+    -  Gets real-time events from the server.
+    - Example: docker events
+
+21. docker history
+    -  Shows the history of an image.
+    - Example: docker history nginx
+
+22. docker login
+    -  Logs into a Docker registry.
+    - Example: docker login
+
+23. docker logout
+    -  Logs out from a Docker registry.
+    - Example: docker logout
+
+24. docker pause
+    -  Pauses all processes within one or more containers.
+    - Example: docker pause my_container
+
+25. docker unpause
+    -  Unpauses all processes within one or more containers.
+    - Example: docker unpause my_container
+
+26. docker port
+    -  Lists port mappings or a specific mapping for the container.
+    - Example: docker port my_container
+
+27. docker rename
+    -  Renames a container.
+    - Example: docker rename my_container new_container_name
+
+28. docker restart
+    -  Restarts one or more containers.
+    - Example: docker restart my_container
+
+29. docker save
+    -  Saves one or more images to a tar archive.
+    - Example: docker save -o myimage.tar nginx
+
+30. docker search
+    -  Searches the Docker Hub for images.
+    - Example: docker search ubuntu
+
+31. docker start
+    -  Starts one or more stopped containers.
+    - Example: docker start my_container
+
+32. docker stats
+    -  Displays a live stream of container(s) resource usage statistics.
+    - Example: docker stats
+
+33. docker top
+    -  Displays the running processes of a container.
+    - Example: docker top my_container
+
+34. docker update
+    -  Updates configuration of one or more containers.
+    - Example: docker update --cpu-shares 512 my_container
+
+35. docker wait
+    -  Blocks until one or more containers stop, then prints their exit codes.
+    - Example: docker wait my_container
