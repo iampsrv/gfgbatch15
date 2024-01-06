@@ -1,0 +1,13 @@
+name: Greetings
+on: 
+  push:
+    branches: ["masterpranjal"]
+jobs:
+  myfirstjob:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: List all files and folders
+      run: |
+        ls -ltr
+        echo "Testing Github runner"

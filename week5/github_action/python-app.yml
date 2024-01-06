@@ -1,0 +1,76 @@
+name: Build and Test Python application
+
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build_and_test:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install -r requirements.txt
+        pwd
+        touch /home/runner/work/cicdgfg12/cicdgfg12/pranjal.txt
+    - name: Test with pytest
+      run: |
+        pytest test.py --doctest-modules --junitxml=junit/test-results.xml
+
+    - name: Upload pytest test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: pytest-results
+        path: junit/test-results.xml
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
+      
+    - name: Upload pranjal txt file
+      uses: actions/upload-artifact@v3
+      with:
+        name: pranjaltext
+        path: /home/runner/work/cicdgfg12/cicdgfg12/pranjal.txt
+      # Use always() to always run this step to publish test results when there are test failures
+      if: ${{ always() }}
+  
+
+  build-and-push-docker-image-to-github-packages:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build container image
+      uses: docker/build-push-action@v1
+      with: 
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/cicdbatch12
+        tag_with_sha: true
+        tag_with_ref: true
+  
+  build-and-push-docker-image-to-dockerhub:
+    runs-on: ubuntu-latest   
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+        
+      - name: Build and Push docker image to docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: psrv3/cicdbatch12
+          tag_with_ref: true
