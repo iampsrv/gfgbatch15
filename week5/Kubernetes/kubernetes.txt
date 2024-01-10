@@ -1,0 +1,8 @@
+sudo systemctl status kubelet
+sudo systemctl start kubelet
+sudo kubectl cluster-info
+sudo systemctl restart kubelet
+kubectl config view
+sudo systemctl status kube-apiserver
+sudo kubeadm reset
+sudo kubeadm init
