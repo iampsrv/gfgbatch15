@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpod
+  labels:
+    name: myfirstpod
+spec:
+  containers:
+  - name: myfirstpodcontainer
+    image: psrv3/cicdbatchfifteenga
+    ports:
+    - containerPort: 5000

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myfirstpod
+  labels:
+    name: myfirstpod
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      name: myfirstpod
+  template:
+    metadata:
+      labels:
+        name: myfirstpod
+    spec:
+      containers:
+      - name: myfirstpodcontainer
+        image: psrv3/cicdbatchfifteenga
+        ports:
+        - containerPort: 5000
