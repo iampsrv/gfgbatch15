@@ -1,0 +1,5 @@
+sudo apt-get install stress
+stress --cpu 8 --timeout 60s
+
+
+CPU utilization: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
