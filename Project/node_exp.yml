@@ -1,0 +1,47 @@
+- name: Install and Configure Node Exporter
+  hosts: prod
+  tasks:
+  - name: Update yum cache
+    yum:
+      update_cache: yes
+
+  - name: Install required packages
+    yum:
+      name:
+      - wget
+      - tar
+      state: present
+    become: yes
+
+  - name: Download Node Exporter
+    get_url:
+      url: https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+      dest: /home/ec2-user/node_exporter-1.5.0.linux-amd64.tar.gz
+    become: yes
+
+  - name: Extract Node Exporter
+    unarchive:
+      src: /home/ec2-user/node_exporter-1.5.0.linux-amd64.tar.gz
+      dest: /home/ec2-user
+      remote_src: yes
+
+  - name: Check if Node Exporter directory is already renamed
+    stat:
+      path: /home/ec2-user/node_exporter
+    register: node_exporter_renamed
+
+  - name: Rename Node Exporter directory
+    command: mv /home/ec2-user/node_exporter-1.5.0.linux-amd64 /home/ec2-user/node_exporter
+    when: not node_exporter_renamed.stat.exists
+
+  - name: Check if Node Exporter is already running
+    shell: pgrep -f node_exporter
+    register: node_exporter_running
+    ignore_errors: true
+
+  - name: Start Node Exporter
+    command: /home/ec2-user/node_exporter/node_exporter
+    async: 86400
+    poll: 0
+    become: yes
+    when: node_exporter_running.rc != 0
